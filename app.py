@@ -183,6 +183,8 @@ if df is not None:
     pairs_df = arrangement2df(arrangement)
 
     pairs_df = pairs_df.sort_values(by="Person 1")
+    pairs_df = pairs_df.reset_index(drop=True)
+
 
     pairs_df.to_pickle("example.pkl")
 
