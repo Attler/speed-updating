@@ -192,8 +192,10 @@ if df is not None:
 else:
     eg_df = pd.read_pickle("example.pkl")
 
-    st.write("Example output")
+    st.markdown("## Example output")
     st.table(eg_df)
+
+    st.markdown(get_table_download_link(eg_df), unsafe_allow_html=True)
 
 
 """
