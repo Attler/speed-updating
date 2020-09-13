@@ -29,6 +29,7 @@ Copy this [Guided Track survey](https://www.guidedtrack.com/programs/14467/edit)
 * Upload this csv file to this app 
 """)
 
+
 def get_data():
     file_buffer = st.file_uploader("Upload file", type=['csv'])
 
@@ -117,9 +118,9 @@ def local_search(people, steps):
         new = random_step(current)
         if arrangement_score(current) < arrangement_score(new):  # find better arrangement
             change = arrangement_score(new) - arrangement_score(current)
-            print('     ' + str(arrangement_score(current)))
+            # print('     ' + str(arrangement_score(current)))
             current = new
-            print('     +', change)
+            # print('     +', change)
     return current
 
 
@@ -131,7 +132,7 @@ def arrange(people, num_iterations=100):
 
         output = local_search(people, steps=50)
         output_score = arrangement_score(output)
-        print(str(i) + ': final overall score: ' + str(output_score))
+        # print(str(i) + ': final overall score: ' + str(output_score))
 
         if output_score > overall_best_score:
             overall_best_score = output_score
@@ -185,8 +186,7 @@ if df is not None:
     pairs_df = pairs_df.sort_values(by="Person 1")
     pairs_df = pairs_df.reset_index(drop=True)
 
-
-    pairs_df.to_pickle("example.pkl")
+    # pairs_df.to_pickle("example.pkl")
 
     st.table(pairs_df)
 
@@ -198,7 +198,6 @@ else:
     st.table(eg_df)
 
     st.markdown(get_table_download_link(eg_df), unsafe_allow_html=True)
-
 
 """
 This app was created by [JJ](https://jhepburn.io/)
